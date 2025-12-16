@@ -36,7 +36,6 @@ void setup() {
 
 void loop(){
   long left   = GetDistance(sensors[0]); 
-  // long center = GetDistance(sensors[1]);
   long right  = GetDistance(sensors[2]);
 
   Serial.print(">");
@@ -44,10 +43,6 @@ void loop(){
   Serial.print("Left:");
   Serial.print(left);
   Serial.print(",");
-
-  // Serial.print("Center:");
-  // Serial.print(center);
-  // Serial.print(",");
 
   Serial.print("Right:");
   Serial.print(right);
