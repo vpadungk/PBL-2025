@@ -47,6 +47,37 @@ Mode that you can set:
 |`2`|Servo Pattern Walk forward|
 |`3`|Servo Pattern Walk Side|
 
+To setup the servo via PWM Driver, you can set the servo pin and angle by `Servo` structure.
+
+```cpp
+struct Servo {
+  int Port;
+  int PrevAngle;
+  int CurAngle;
+};
+```
+
+- `Port` -> Identifies the control port (pin or channel) used to drive the servo.
+- `PrevAngle` -> Stores the last angle value before an update.
+- `CurAngle` -> The current target angle of the servo in degrees.
+
+For this project, we config all port as
+
+```cpp
+Servo Servos[8] = {
+  {0, 90, 90},
+  {4, 90, 90},
+  {2, 90, 90},
+  {6, 90, 90},
+  {1, 90, 90},
+  {5, 90, 90},
+  {3, 90, 90},
+  {7, 90, 90}
+};
+```
+>[!WARNING]
+>This pattern are only for [Climbing Code](src/Climbing.cpp).
+
 ## Task 2: GoalKeeper
 >[!NOTE]
 > *Refer code for TH: [Ultrasonic Testing](src/Ultrasonic_Testing.cpp) and [Goalkeeping Code](src/GoalKeeper.cpp)*</br>
