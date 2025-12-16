@@ -11,7 +11,9 @@ This repo contains the documentation code and setting, cooraboration between E-R
 ## Task 1: Climbing stair
 > [!NOTE]
 > *Refer code for TH: [Servo Testing](src/Servo_Testing.cpp) and [Climbing Code](src/Climbing.cpp)*</br>
-**Note:** For Platform.io, if you use our [platformio.ini](platformio.ini), you have to config `build_src_filter` to the file that you want to upload.
+
+>[!WARNING]
+>For Platform.io, if you use our [platformio.ini](platformio.ini), you have to config `build_src_filter` to the file that you want to upload.
 
 ### Configuration Setting
 For control the servo via PWM Driver, you can set the MAX and MIN of servo analog that can do. You can config at 
@@ -29,17 +31,27 @@ For MODE configuration, you can set at
 ```
 Mode that you can set:
 - [Servo Testing](src/Servo_Testing.cpp)
-    - Loop 1 Servo from Max angle to Min (PORT 0) -> 1
-    - Serial input angle value to control 1 Servo (PORT 0) -> 2
-    - Serial input angle value to control all port servo that set -> 3
-    - Serial input port and angle value to controll servo -> 4 (Defult)
+
+|Mode|Description|
+|----|-----------|
+|`1`|Loop 1 Servo from Max angle to Min (`PORT 0`)|
+|`2`|Serial input angle value to control 1 Servo (`PORT 0`)|
+|`3`|Serial input angle value to control all port servo that set|
+|`4`|Serial input port and angle value to controll servo *(Defult)*|
+
 - [Climbing Code](src/Climbing.cpp)
-    - Serial input port and angle value to controll servo -> 1 (Defult)
-    - Servo Pattern Walk forward -> 2
-    - Servo Pattern Walk Side -> 3
+
+|Mode|Description|
+|----|-----------|
+|`1`|Serial input port and angle value to controll servo *(Defult)*|
+|`2`|Servo Pattern Walk forward|
+|`3`|Servo Pattern Walk Side|
 
 ## Task 2: GoalKeeper
+>[!NOTE]
 > *Refer code for TH: [Ultrasonic Testing](src/Ultrasonic_Testing.cpp) and [Goalkeeping Code](src/GoalKeeper.cpp)*</br>
-**Note:** For Platform.io, if you use our [platformio.ini](platformio.ini), you have to config `build_src_filter` to the file that you want to upload.
+
+>[!WARNING]
+>For Platform.io, if you use our [platformio.ini](platformio.ini), you have to config `build_src_filter` to the file that you want to upload.
 
 ## Task 3: Preformance
