@@ -1,1 +1,1 @@
-# PBL 2025 (Sakura Science Program [Kyutech])
+# Sakura Science Exchange Program 2025 (PBL)
