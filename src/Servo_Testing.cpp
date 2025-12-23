@@ -11,6 +11,8 @@
 
 // Current Mode
 #define MODE 4
+// #define NORMAL_POS
+#define GOAL_POS
 
 // Define the Servo pin in each legs
 struct Servo{
@@ -31,16 +33,31 @@ struct Servo{
 // 6 -> Bottom Left
 // 7 -> Bottom Right
 
-Servo Servos[8] = {
-  {0, 90, 90},   // TopLeft[0] (+ = Horizontal, - = Vertical)    
-  {1, 90, 90},   // TopLeft[1] (+ = Inner, - = Outer)            
-  {2, 90, 90},   // BottomLeft[0] (+ = Vertical, - = Horizontal) 
-  {3, 90, 90},   // BottomLeft[1] (+ = Inner, - = Outer)         
-  {4, 90, 90},   // TopRight[0] (+ = Vertical, - = Horizontal)   
-  {5, 90, 90},   // TopRight[1] (+ = Outer, - = Inner)           
-  {6, 90, 90},   // BottomRight[0] (+ = Horizontal, - = Vertical)
-  {7, 90, 90}    // BottomRight[1] (+ = Outer, - = Inner)        
-};
+#ifdef NORMAL_POS
+  Servo Servos[8] = {
+    {0, 90, 90},   // TopLeft[0] (+ = Horizontal, - = Vertical)    
+    {1, 90, 90},   // TopLeft[1] (+ = Inner, - = Outer)            
+    {2, 90, 90},   // BottomLeft[0] (+ = Vertical, - = Horizontal) 
+    {3, 90, 90},   // BottomLeft[1] (+ = Inner, - = Outer)         
+    {4, 90, 90},   // TopRight[0] (+ = Vertical, - = Horizontal)   
+    {5, 90, 90},   // TopRight[1] (+ = Outer, - = Inner)           
+    {6, 90, 90},   // BottomRight[0] (+ = Horizontal, - = Vertical)
+    {7, 90, 90}    // BottomRight[1] (+ = Outer, - = Inner)        
+  };
+#endif
+
+#ifdef GOAL_POS
+  Servo Servos[8] = {
+    {0, 135, 135},
+    {1, 45, 45},
+    {2, 155, 155},
+    {3, 40, 40},
+    {4, 90, 90},
+    {5, 90, 90},
+    {6, 90, 90},
+    {7, 90, 90}
+  };
+#endif
 
 Adafruit_PWMServoDriver PWM = Adafruit_PWMServoDriver();
 
@@ -134,7 +151,7 @@ void setup() {
   PWM.setPWMFreq(60);
   
   for (size_t i = 0; i < 8; i++){
-      SetServo(Servos[i], 90);
+    SetServo(Servos[i], Servos[i].CurAngle);
   }
   delay(20);
 }
