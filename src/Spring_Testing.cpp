@@ -7,8 +7,8 @@
 #define SERVO_SPEED_STOP 375
 #define SERVO_SPEED_MAX  600
 
-#define SPEED_MAX        100
-#define SPEED_MIN       -100
+#define SPEED_MAX  100
+#define SPEED_MIN -100
 
 Adafruit_PWMServoDriver PWM = Adafruit_PWMServoDriver();
 
