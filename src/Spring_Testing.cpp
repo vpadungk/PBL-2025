@@ -3,16 +3,29 @@
 #include <Adafruit_PWMServoDriver.h>
 
 // Define limit of the servo maximum and minimum
-#define SERVO_MIN 150
-#define SERVO_MAX 650
+#define SERVO_SPEED_MIN  100
+#define SERVO_SPEED_STOP 375
+#define SERVO_SPEED_MAX  600
 
-#define ANGLE_MAX 180
-#define ANGLE_MIN 0
+#define SPEED_MAX  100
+#define SPEED_MIN -100
 
 Adafruit_PWMServoDriver PWM = Adafruit_PWMServoDriver();
 
-void SetServo(int pin, int newAngle) {
-  PWM.setPWM(pin, 0, newAngle);
+int MappingSpeed(int Speed){
+  if (Speed > 100){
+    return SERVO_SPEED_MAX;
+  }else if (Speed < -100){
+    return SERVO_SPEED_MIN;
+  }else if (Speed == 0){
+    return SERVO_SPEED_STOP;
+  }else{
+    return map(Speed, SPEED_MIN, SPEED_MAX, SERVO_SPEED_MIN, SERVO_SPEED_MAX);
+  }
+}
+
+void SetServo(int pin, int newSpeed) {
+  PWM.setPWM(pin, 0, newSpeed);
 }
 
 void setup() {
@@ -23,7 +36,16 @@ void setup() {
   PWM.setPWMFreq(60);
 }
 
-void loop(){
-    int angle = Serial.parseInt();
-    SetServo(8, angle);
+void loop() {
+  if (Serial.available()) {
+    int speed = Serial.parseInt();  // -100 to 100
+    int pwm   = MappingSpeed(speed);
+
+    SetServo(8, pwm);
+
+    Serial.print("Speed: ");
+    Serial.print(speed);
+    Serial.print("  PWM: ");
+    Serial.println(pwm);
+  }
 }
