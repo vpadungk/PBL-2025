@@ -4,11 +4,13 @@
 
 // Define limit of the servo maximum and minimum
 #define SERVO_SPEED_MIN  100
-#define SERVO_SPEED_STOP 375
+#define SERVO_SPEED_STOP 362
 #define SERVO_SPEED_MAX  600
 
 #define SPEED_MAX        100
 #define SPEED_MIN       -100
+
+#define MODE             2
 
 Adafruit_PWMServoDriver PWM = Adafruit_PWMServoDriver();
 
@@ -37,15 +39,27 @@ void setup() {
 }
 
 void loop() {
-  if (Serial.available()) {
-    int speed = Serial.parseInt();  // -100 to 100
-    int pwm   = MappingSpeed(speed);
+  switch (MODE){
+    case 1:
+      if (Serial.available()) {
+        int speed = Serial.parseInt();  // -100 to 100
+        int pwm   = MappingSpeed(speed);
 
-    SetServo(8, pwm);
+        SetServo(8, pwm);
 
-    Serial.print("Speed: ");
-    Serial.print(speed);
-    Serial.print("  PWM: ");
-    Serial.println(pwm);
+        Serial.print("Speed: ");
+        Serial.print(speed);
+        Serial.print("  PWM: ");
+        Serial.println(pwm);
+      }
+      break;
+    
+    case 2:
+      int speed = -100;
+      SetServo(8,MappingSpeed(speed));
+      delay(3800);
+      SetServo(8,MappingSpeed(0));
+      delay(5000);
+      break;
   }
 }
