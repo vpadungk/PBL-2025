@@ -17,7 +17,7 @@ During some mechanical issue. New part are printing
 #define ANGLE_MIN 0
 
 // Current Mode
-#define MODE 3
+#define MODE 2
 
 #define DELAYTIME 100
 
@@ -97,217 +97,167 @@ void SerialInputControlPin(){
 void BottomLeft_Move(){
   SetServo(Servos[1], 160);
   delay(DELAYTIME);
-  SetServo(Servos[0], 55);
+  SetServo(Servos[0], 40);
   delay(DELAYTIME);
-  SetServo(Servos[5], 50);
+  SetServo(Servos[5], 70);
   delay(DELAYTIME);
   SetServo(Servos[1], 90);
   delay(DELAYTIME);
-  SetServo(Servos[0], 140);
-  delay(DELAYTIME);
-  SetServo(Servos[5], 90);
-  delay(DELAYTIME);
   SetServo(Servos[0], 90);
+  delay(DELAYTIME);
+  SetServo(Servos[5], 70);
   delay(DELAYTIME);
 }
 void TopRight_Move(){
-  SetServo(Servos[2], 60);
-  delay(DELAYTIME);
   SetServo(Servos[3], 30);
   delay(DELAYTIME);
-  SetServo(Servos[2], 160);
+  SetServo(Servos[2], 150);
   delay(DELAYTIME);
-  SetServo(Servos[7], 130);
+  SetServo(Servos[7], 120);
   delay(DELAYTIME);
   SetServo(Servos[3], 95);
   delay(DELAYTIME);
-  SetServo(Servos[2], 60);
+  SetServo(Servos[2], 90);
   delay(DELAYTIME);
   SetServo(Servos[7], 90);
   delay(DELAYTIME);
-  SetServo(Servos[2], 90);
-  delay(DELAYTIME);
 }
 void TopLeft_Move(){
-  SetServo(Servos[6], 125);
-  delay(DELAYTIME);
   SetServo(Servos[7], 150);
   delay(DELAYTIME);
   SetServo(Servos[6], 30);
   delay(DELAYTIME);
-  SetServo(Servos[3], 60);
+  SetServo(Servos[3], 70);
   delay(DELAYTIME);
   SetServo(Servos[7], 90);
   delay(DELAYTIME);
-  SetServo(Servos[6], 125);
+  SetServo(Servos[6], 90);
   delay(DELAYTIME);
   SetServo(Servos[3], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[6], 90);
   delay(DELAYTIME);
 }
 void BottomRight_Move(){
   SetServo(Servos[5], 15);
   delay(DELAYTIME);
-  SetServo(Servos[4], 135);
+  SetServo(Servos[4], 125);
   delay(DELAYTIME);
-  SetServo(Servos[1], 110);
+  SetServo(Servos[1], 95);
   delay(DELAYTIME);
   SetServo(Servos[5], 90);
   delay(DELAYTIME);
-  SetServo(Servos[4], 45);
+  SetServo(Servos[4], 90);
   delay(DELAYTIME);
   SetServo(Servos[1], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[4], 90);
   delay(DELAYTIME);
 }
 
 void BottomLeft_Move2(){
-  SetServo(Servos[3], 30);
+  SetServo(Servos[1], 120);
   delay(DELAYTIME);
-  SetServo(Servos[2], 60);
+  SetServo(Servos[0], 50);
   delay(DELAYTIME);
-  SetServo(Servos[7], 140);
+  SetServo(Servos[1], 90);
   delay(DELAYTIME);
-  SetServo(Servos[3], 90);
+  SetServo(Servos[0], 90);
+  delay(DELAYTIME);
+  // SetServo(Servos[5], 90);
+  // delay(DELAYTIME);
+}
+void TopRight_Move2(){
+  SetServo(Servos[3], 40);
+  delay(DELAYTIME);
+  SetServo(Servos[2], 150);
+  delay(DELAYTIME);
+  SetServo(Servos[7], 100);
+  delay(DELAYTIME);
+  SetServo(Servos[3], 95);
   delay(DELAYTIME);
   SetServo(Servos[2], 90);
   delay(DELAYTIME);
   SetServo(Servos[7], 90);
   delay(DELAYTIME);
 }
-void TopRight_Move2(){
-  SetServo(Servos[0], 45);
-  delay(DELAYTIME);
-  SetServo(Servos[1], 160);
-  delay(DELAYTIME);
-  SetServo(Servos[5], 50);
-  delay(DELAYTIME);
-  SetServo(Servos[0], 140);
-  delay(DELAYTIME);
-  SetServo(Servos[1], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[0], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[5], 90);
-  delay(DELAYTIME);
-}
 void TopLeft_Move2(){
-  SetServo(Servos[4], 135);
+  SetServo(Servos[7], 140);
   delay(DELAYTIME);
-  SetServo(Servos[5], 15);
+  SetServo(Servos[6], 30);
   delay(DELAYTIME);
-  SetServo(Servos[1], 100);
-  delay(DELAYTIME);
-  SetServo(Servos[4], 45);
-  delay(DELAYTIME);
-  SetServo(Servos[5], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[4], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[1], 90);
-  delay(DELAYTIME);
-}
-void BottomRight_Move2(){
-  SetServo(Servos[7], 150);
-  delay(DELAYTIME);
-  SetServo(Servos[6], 125);
-  delay(DELAYTIME);
-  SetServo(Servos[3], 60);
+  SetServo(Servos[3], 80);
   delay(DELAYTIME);
   SetServo(Servos[7], 90);
   delay(DELAYTIME);
   SetServo(Servos[6], 90);
   delay(DELAYTIME);
   SetServo(Servos[3], 90);
+  delay(DELAYTIME);
+}
+void BottomRight_Move2(){
+  SetServo(Servos[5], 40);
+  delay(DELAYTIME);
+  SetServo(Servos[4], 125);
+  delay(DELAYTIME);
+  SetServo(Servos[1], 95);
+  delay(DELAYTIME);
+  SetServo(Servos[5], 90);
+  delay(DELAYTIME);
+  SetServo(Servos[4], 90);
+  delay(DELAYTIME);
+  SetServo(Servos[1], 90);
   delay(DELAYTIME);
 }
 
 void TopLeft_Move_Long(){
-  SetServo(Servos[0], 135);
-  delay(DELAYTIME);
-  SetServo(Servos[1], 160);
-  delay(DELAYTIME);
-  SetServo(Servos[7], 120);
-  delay(DELAYTIME);
-  SetServo(Servos[0], 45);
-  delay(DELAYTIME);
-  SetServo(Servos[1], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[0], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[7], 90);
-  delay(DELAYTIME);
+  MoveServo(Servos[1], 150, 5);
+  MoveServo(Servos[0], 35, 5);
+  MoveServo(Servos[7], 110, 5);
+  MoveServo(Servos[1], 90, 5);
+  MoveServo(Servos[0], 90, 5);
+  MoveServo(Servos[7], 90, 5);
 }
 void TopRight_Move_Long(){
-  SetServo(Servos[6], 30);
-  delay(DELAYTIME);
-  SetServo(Servos[7], 160);
-  delay(DELAYTIME);
-  SetServo(Servos[1], 115);
-  delay(DELAYTIME);
-  SetServo(Servos[6], 120);
-  delay(DELAYTIME);
-  SetServo(Servos[7], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[6], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[1], 90);
-  delay(DELAYTIME);
+  MoveServo(Servos[7], 150, 5);
+  MoveServo(Servos[6], 130, 5);
+  MoveServo(Servos[1], 110, 5);
+  MoveServo(Servos[7], 90, 5);
+  MoveServo(Servos[6], 90, 5);
+  MoveServo(Servos[1], 90, 5);
 }
 void BottomLeft_Move_Long(){
-  SetServo(Servos[5], 40);
-  delay(DELAYTIME);
-  SetServo(Servos[4], 45);
-  delay(DELAYTIME);
-  SetServo(Servos[3], 55);
-  delay(DELAYTIME);
-  SetServo(Servos[5], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[4], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[3], 90);
-  delay(DELAYTIME);
+  MoveServo(Servos[5], 40, 5);
+  MoveServo(Servos[4], 65, 5);
+  MoveServo(Servos[3], 75, 5);
+  MoveServo(Servos[5], 90, 5);
+  MoveServo(Servos[4], 90, 5);
+  MoveServo(Servos[3], 90, 5);
 }
 void BottomRight_Move_Long(){
-  SetServo(Servos[3], 30);
-  delay(DELAYTIME);
-  SetServo(Servos[2], 155);
-  delay(DELAYTIME);
-  SetServo(Servos[5], 60);
-  delay(DELAYTIME);
-  SetServo(Servos[3], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[2], 90);
-  delay(DELAYTIME);
-  SetServo(Servos[5], 90);
-  delay(DELAYTIME);
+  MoveServo(Servos[3], 30, 5);
+  MoveServo(Servos[2], 130, 5);
+  MoveServo(Servos[5], 55, 5);
+  MoveServo(Servos[3], 95, 5);
+  MoveServo(Servos[2], 90, 5);
+  MoveServo(Servos[5], 90, 5);
 }
 
 void WalkForward(int stepDelay = 8) {
   TopLeft_Move();
-  BottomRight_Move();
-  TopRight_Move();
   BottomLeft_Move();
+  TopRight_Move();
+  BottomRight_Move();
 }
 
 void WalkForward2(int stepDelay = 8) {
   TopLeft_Move2();
-  delay(200);
   BottomLeft_Move2();
-  delay(200);
   TopRight_Move2();
-  delay(200);
   BottomRight_Move2();
-  delay(200);
 }
 
 void WalkForwardLong(){
-  TopLeft_Move_Long();
-  BottomRight_Move_Long();
-  BottomLeft_Move_Long();
   TopRight_Move_Long();
+  BottomRight_Move_Long();
+  TopLeft_Move_Long();
+  BottomLeft_Move_Long();
 }
 
 void setup() {
@@ -334,7 +284,7 @@ void loop() {
       break;
 
     case 3:
-      WalkForwardLong();
+      WalkForward2();
       break;
 
   }

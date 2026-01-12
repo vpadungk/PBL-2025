@@ -13,7 +13,7 @@
 #define MODE 3
 
 #define DELAYTIME 1000
-#define DELAYTIME_MOVE 100
+#define DELAYTIME_MOVE 80
 
 // Define the Servo pin in each legs
 struct Servo {
@@ -39,7 +39,7 @@ struct Ultrasonic {
 // 6 -> Bottom Left
 // 7 -> Bottom Right
 
-Servo Servos[8] = {
+Servo Servos[10] = {
   {0, 135, 135},
   {1, 45, 45},
   {2, 155, 155},
@@ -47,7 +47,9 @@ Servo Servos[8] = {
   {4, 90, 90},
   {5, 90, 90},
   {6, 90, 90},
-  {7, 90, 90}
+  {7, 90, 90},
+  {8, 45,  45},
+  {9, 0, 0}
 };
 
 Ultrasonic sensors[3] = {
@@ -104,7 +106,7 @@ void SerialInputControlPin(){
 void Left_Low(){
   SetServo(Servos[4], 125);
   SetServo(Servos[5], 55);
-  SetServo(Servos[6], 100);
+  SetServo(Servos[6], 105);
   SetServo(Servos[7], 80);
   switch (MODE){
     case 2:
