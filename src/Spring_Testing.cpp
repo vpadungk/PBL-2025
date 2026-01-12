@@ -57,7 +57,7 @@ void loop() {
     case 2:
       int speed = -100;
       SetServo(8,MappingSpeed(speed));
-      delay(3800);
+      delay(10000);
       SetServo(8,MappingSpeed(0));
       delay(5000);
       break;
