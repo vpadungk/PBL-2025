@@ -17,9 +17,9 @@ During some mechanical issue. New part are printing
 #define ANGLE_MIN 0
 
 // Current Mode
-#define MODE 3
+#define MODE 1
 
-#define DELAYTIME 100
+#define DELAYTIME 150
 
 // Define the Servo pin in each legs
 struct Servo {
@@ -42,11 +42,11 @@ struct Servo {
 
 Servo Servos[8] = {
   {0, 90, 90},
-  {4, 90, 90},
+  {4, 110, 110},
   {2, 90, 90},
   {6, 90, 90},
   {1, 90, 90},
-  {5, 90, 90},
+  {5, 75, 75},
   {3, 90, 90},
   {7, 90, 90}
 };
@@ -99,13 +99,13 @@ void BottomLeft_Move(){
   delay(DELAYTIME);
   SetServo(Servos[0], 55);
   delay(DELAYTIME);
-  SetServo(Servos[5], 50);
+  SetServo(Servos[4], 60);
   delay(DELAYTIME);
-  SetServo(Servos[1], 90);
+  SetServo(Servos[1], 100);
   delay(DELAYTIME);
   SetServo(Servos[0], 140);
   delay(DELAYTIME);
-  SetServo(Servos[5], 90);
+  SetServo(Servos[4], 90);
   delay(DELAYTIME);
   SetServo(Servos[0], 90);
   delay(DELAYTIME);
@@ -151,13 +151,13 @@ void BottomRight_Move(){
   delay(DELAYTIME);
   SetServo(Servos[4], 135);
   delay(DELAYTIME);
-  SetServo(Servos[1], 110);
+  SetServo(Servos[0], 110);
   delay(DELAYTIME);
-  SetServo(Servos[5], 90);
+  SetServo(Servos[5], 75);
   delay(DELAYTIME);
   SetServo(Servos[4], 45);
   delay(DELAYTIME);
-  SetServo(Servos[1], 90);
+  SetServo(Servos[0], 90);
   delay(DELAYTIME);
   SetServo(Servos[4], 90);
   delay(DELAYTIME);
@@ -186,11 +186,11 @@ void TopRight_Move2(){
   delay(DELAYTIME);
   SetServo(Servos[0], 140);
   delay(DELAYTIME);
-  SetServo(Servos[1], 90);
+  SetServo(Servos[1], 100);
   delay(DELAYTIME);
   SetServo(Servos[0], 90);
   delay(DELAYTIME);
-  SetServo(Servos[5], 90);
+  SetServo(Servos[5], 85);
   delay(DELAYTIME);
 }
 void TopLeft_Move2(){
@@ -287,9 +287,13 @@ void BottomRight_Move_Long(){
 
 void WalkForward(int stepDelay = 8) {
   TopLeft_Move();
+  delay(DELAYTIME);
   BottomRight_Move();
+  delay(DELAYTIME);
   TopRight_Move();
+  delay(DELAYTIME);
   BottomLeft_Move();
+  delay(DELAYTIME);
 }
 
 void WalkForward2(int stepDelay = 8) {
@@ -318,7 +322,7 @@ void setup() {
   PWM.setPWMFreq(60);
   
   for (size_t i = 0; i < 8; i++){
-      SetServo(Servos[i], 90);
+      SetServo(Servos[i], Servos[i].CurAngle);
   }
   delay(1000);
 }
