@@ -10,10 +10,10 @@
 #define ANGLE_MIN 0
 
 // Current Mode
-#define MODE 3
+#define MODE 1
 
 #define DELAYTIME 1000
-#define DELAYTIME_MOVE 80
+#define DELAYTIME_MOVE 100
 
 // Define the Servo pin in each legs
 struct Servo {
@@ -44,12 +44,12 @@ Servo Servos[10] = {
   {1,  45,  45},
   {2, 155, 155},
   {3,  40,  40},
-  {4,  90,  90},
-  {5,  90,  90},
-  {6,  90,  90},
+  {4, 100, 100},
+  {5,  75,  75},
+  {6,  75,  75},
   {7,  90,  90},
   {8,  45,  45},
-  {9,   0,  0}
+  {9,   0,   0}
 };
 
 Ultrasonic sensors[3] = {
@@ -57,6 +57,8 @@ Ultrasonic sensors[3] = {
   {11, 10},
   {5, 12}
 };
+
+int Distance = 85; //cm
 
 Adafruit_PWMServoDriver PWM = Adafruit_PWMServoDriver();
 
@@ -106,11 +108,11 @@ void SerialInputControlPin(){
 void Left_Low(){
   SetServo(Servos[4], 125);
   SetServo(Servos[5], 55);
-  SetServo(Servos[6], 105);
+  SetServo(Servos[6], 100);
   SetServo(Servos[7], 80);
   switch (MODE){
     case 2:
-      delay(DELAYTIME);
+      delay(DELAYTIME_MOVE);
       break;
     case 3:
       delay(DELAYTIME_MOVE);
@@ -119,13 +121,13 @@ void Left_Low(){
     default:
       break;
   }
-  SetServo(Servos[4], 90);
-  SetServo(Servos[5], 90);
+  SetServo(Servos[4], 100);
+  SetServo(Servos[5], 75);
   SetServo(Servos[7], 90);
-  SetServo(Servos[6], 90);
+  SetServo(Servos[6], 75);
   switch (MODE){
     case 2:
-      delay(DELAYTIME);
+      delay(DELAYTIME_MOVE);
       break;
     case 3:
       delay(DELAYTIME_MOVE);
@@ -143,7 +145,7 @@ void Right_Low(){
   SetServo(Servos[4], 80);
   switch (MODE){
     case 2:
-      delay(DELAYTIME);
+      delay(DELAYTIME_MOVE);
       break;
     case 3:
       delay(DELAYTIME_MOVE);
@@ -153,12 +155,12 @@ void Right_Low(){
       break;
   }
   SetServo(Servos[7], 90);
-  SetServo(Servos[6], 90);
-  SetServo(Servos[5], 90);
-  SetServo(Servos[4], 90);
+  SetServo(Servos[6], 75);
+  SetServo(Servos[5], 75);
+  SetServo(Servos[4], 100);
   switch (MODE){
       case 2:
-        delay(DELAYTIME);
+        delay(DELAYTIME_MOVE);
         break;
 
       case 3:
@@ -191,20 +193,32 @@ long GetDistance(Ultrasonic sensors){
 
 void CatchBall(long LeftValue, long RightValue){
   if (LeftValue > RightValue){
-    for (size_t i = 0; i < 10; i++){
+    for (size_t i = 0; i < 5; i++){
       Left_Low();
     }
+    SetServo(Servos[2], 70);
+    SetServo(Servos[5], 30);
+    SetServo(Servos[4], 150);
+    SetServo(Servos[7], 150);
+    SetServo(Servos[6], 30);
     delay(2000);
-    for (size_t i = 0; i < 10; i++){
+    SetServo(Servos[2], 155);
+    for (size_t i = 0; i < 5; i++){
       Right_Low();
     }
     delay(2000);
   }else if (RightValue > LeftValue){
-    for (size_t i = 0; i < 10; i++){
+    for (size_t i = 0; i < 5; i++){
       Right_Low();
     }
+    SetServo(Servos[7], 150);
+    SetServo(Servos[6], 30);
+    SetServo(Servos[1], 120);    
+    SetServo(Servos[5], 30);
+    SetServo(Servos[4], 150);
     delay(2000);
-    for (size_t i = 0; i < 10; i++){
+    SetServo(Servos[1], 45);
+    for (size_t i = 0; i < 5; i++){
       Left_Low();
     }
     delay(2000);
@@ -219,7 +233,7 @@ void setup() {
   PWM.begin();
   PWM.setPWMFreq(60);
   
-  for (size_t i = 0; i < 8; i++){
+  for (size_t i = 0; i < 10; i++){
       SetServo(Servos[i], Servos[i].CurAngle);
   }
   delay(1000);
@@ -232,14 +246,20 @@ void loop() {
     break;
     
     case 2:
-      Left_Low();
-      Right_Low();
+      for (size_t i = 0; i < 10; i++){
+        Left_Low();
+      }
+      delay(2000);
+      for (size_t i = 0; i < 10; i++){
+        Right_Low();
+      }
+      delay(2000);
     break;
 
     case 3:
       long left   = GetDistance(sensors[0]);
       long right  = GetDistance(sensors[2]);
-      if (left <= 50 || right <= 50){
+      if (left <= Distance || right <= Distance){
         CatchBall(left, right);
       }
 
@@ -252,7 +272,7 @@ void loop() {
       Serial.print("Right:");
       Serial.print(right);
       Serial.println();
-      delay(100);  
+      delay(25);  
     break;
   }
 }
